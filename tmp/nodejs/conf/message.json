@@ -1,0 +1,26 @@
+{
+  "100": {
+    "message": "Database Error"
+  },
+  "101": {
+    "message": "Invalid fields"
+  },
+  "1000": {
+    "message": "Invalid customer id"
+  },
+  "1001": {
+    "message": "The resource belongs to another user"
+  },
+  "2000": {
+    "message": "Duplicate ledger, Ledger name already exist"
+  },
+  "2001": {
+    "message": "Invalid group id"
+  },
+  "3001": {
+    "message": "Party ledger should not be Cash/Bank"
+  },
+  "3002": {
+    "message": "Cash or Bank ledger is not valid"
+  }
+}

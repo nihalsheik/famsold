@@ -1,0 +1,9 @@
+javascript:(function(){
+  document.getElementsByName('name')[0].value='';
+  document.getElementsByName('address')[0].value='';
+  document.getElementsByName('state')[0].value='';
+  document.getElementsByName('city')[0].value='';
+  document.getElementsByName('pin')[0].value='';
+  document.getElementsByName('phone')[0].value='';
+  document.getElementsByName('email')[0].value='';
+})();

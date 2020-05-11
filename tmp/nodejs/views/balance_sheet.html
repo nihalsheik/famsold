@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/default.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script>
+        var table;
+
+        $(document).ready(function() {
+
+            $.ajax({
+                url: 'http://localhost:3000/api/v1/report/balance_sheet',
+                data: {ledgerWise: false},
+                contentType: 'json'
+            }).done(function(res) {
+                var groups = res.response;
+                table = $('#tblAsset tbody');
+                table.html('');
+                t(groups[0].children, 0, 1);
+                print(0, 'Total', 1, groups[0].debit, groups[0].credit);
+
+                table = $('#tblLiability tbody');
+                table.html('');
+                t(groups[1].children, 0, 2);
+                print(0, 'Total', 2, groups[1].debit, groups[1].credit);
+
+            });
+        });
+
+        function t(groups, level, nature) {
+            groups.forEach(function(group) {
+                print(level, group.name, nature, group.debit, group.credit);
+                if (group.children && Array.isArray(group.children)) {
+                    t(group.children, level + 1, group.nature);
+                }
+            });
+        }
+
+        function indent(level) {
+            return Array(level * 5).join('&nbsp;')
+        }
+
+        function print(level, name, nature, debit, credit) {
+            console.log(name, debit, credit);
+            tr = $('<tr>');
+            tr.append('<td>' + indent(level) + name + '</td>');
+            var amt = nature == 1 ? debit - credit : credit - debit;
+
+            if (level == 0) {
+                tr.append('<td class="amt"></td>');
+                tr.append('<td class="amt">' + fmt(amt) + '</td>');
+            } else {
+                tr.append('<td class="amt">' + fmt(amt) + '</td>');
+                tr.append('<td class="amt"></td>');
+            }
+            table.append(tr);
+        }
+
+        function fmt(amt) {
+            return amt == 0 ? '-' : amt
+        }
+    </script>
+</head>
+<body>
+<h1>Balance Sheet</h1>
+
+<table id="tbTable" border="0" width="80%">
+    <tr>
+        <td valign="top">
+            <table id="tblLiability" border="1" width="100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th align="right" width="100"></th>
+                    <th align="right" width="100">Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+        <td valign="top">
+            <table id="tblAsset" border="1" width="100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th align="right" width="100"></th>
+                    <th align="right" width="100">Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

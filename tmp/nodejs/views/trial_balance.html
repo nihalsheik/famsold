@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/default.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'http://localhost:3000/api/v1/report/trialBalance',
+                data: {ledgerWise: true},
+                contentType: 'json'
+            }).done(function(res) {
+                var table = $('#tbTable tbody');
+                table.html('');
+                var response = res.response;
+                var ledgers = response.ledgers;
+                console.log(ledgers);
+                ledgers.forEach(function(ledger) {
+                    print(table, ledger.name, ledger.obDebit, ledger.obCredit, ledger.debit, ledger.credit, ledger.cbDebit, ledger.cbCredit);
+                });
+                var diff = response.difference;
+                print(table, diff.name, 0, 0, 0, 0, diff.debit, diff.credit);
+                var tot = response.total;
+                print(table, 'Total', 0, 0, 0, 0, tot.debit, tot.credit);
+
+            });
+        });
+
+        function print(table, name, obDebit, obCredit, debit, credit, cbDebit, cbCredit) {
+            tr = $('<tr>');
+            tr.append('<td>' + name + '</td>');
+            tr.append('<td class="amt">' + fmt(obDebit) + '</td>');
+            tr.append('<td class="amt">' + fmt(obCredit) + '</td>');
+            tr.append('<td class="amt">' + fmt(debit) + '</td>');
+            tr.append('<td class="amt">' + fmt(credit) + '</td>');
+            tr.append('<td class="amt">' + fmt(cbDebit) + '</td>');
+            tr.append('<td class="amt">' + fmt(cbCredit) + '</td>');
+            table.append(tr);
+        }
+
+        function fmt(amt) {
+            return amt == 0 ? '-' : amt
+        }
+    </script>
+</head>
+<body>
+
+
+<table id="tbTable" border="1" width="70%">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th align="right">Debit</th>
+        <th align="right">Credit</th>
+        <th align="right">Debit</th>
+        <th align="right">Credit</th>
+        <th align="right">Debit</th>
+        <th align="right">Credit</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</body>
+</html>

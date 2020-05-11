@@ -1,0 +1,21 @@
+* {
+    font-family: Tahoma;
+    font-size: 12px;
+}
+
+.amt {
+    text-align: right;
+}
+
+table, table td, table th, table tr {
+    border-collapse: collapse;
+    border: 1px solid #cccccc;
+}
+
+td {
+    padding: 5px;
+}
+
+tr {
+    height: 35px;
+}

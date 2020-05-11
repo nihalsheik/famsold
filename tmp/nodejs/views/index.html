@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            font-family: Arial;
+            font-size: 11px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        li {
+            height: 25px;
+            clear: both;
+            float: none;
+        }
+
+        .indoor {
+            margin-left: 20px;
+            padding: 2px;
+            float: none;
+            clear: both;
+        }
+
+        .outdoor {
+            margin-left: 24px;
+        }
+
+        .outdoor .name {
+            font-weight: bold;
+        }
+
+        .indoor .name {
+            font-weight: normal;
+        }
+
+        .etx {
+            margin-left: 30px;
+        }
+
+        input {
+            float: left;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .name {
+            padding: 4px;
+            padding-left: 35px;
+            cursor: pointer;
+        }
+
+        .etx .name {
+            padding-left: 25px;
+        }
+
+        .name:hover {
+            background-color: #f9ebda;
+        }
+
+        .arrow {
+            width: 10px;
+            height: 20px;
+            float: left;
+            cursor: pointer;
+        }
+
+        .arrow.expand {
+            background: url(img/tree-arrow-sel.png) 0px 5px no-repeat;
+        }
+
+        .arrow.collapse {
+            background: url(img/tree-arrow.png) 0px 5px no-repeat;
+        }
+
+    </style>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/tree.js"></script>
+
+</head>
+<body>
+
+<div id="container" style="width:500px;height: 300px;overflow: auto;border:1px solid #cccccc;padding:10px;clear:both;">
+
+</div>
+</body>
+</html>

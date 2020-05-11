@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/default.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script>
+        var table;
+
+        $(document).ready(function() {
+
+            $.ajax({
+                url: 'http://localhost:3000/api/v1/account_book/get_ledger',
+                data: {ledgerId: 1, page:1},
+                contentType: 'json'
+            }).done(function(res) {
+                var ledgers = res.response.ledgers;
+                table = $('#tbTable tbody');
+
+                var tr;
+                ledgers.forEach(function(ledger){
+                    tr = $('<tr>');
+                    tr.append('<td>'+ledger.date+'</td>');
+                    tr.append('<td>'+ledger.voucherId+'</td>');
+                    tr.append('<td>'+ledger.type+'</td>');
+                    tr.append('<td>'+ledger.name+'</td>');
+                    tr.append('<td>'+ledger.debit+'</td>');
+                    tr.append('<td>'+ledger.credit+'</td>');
+                    table.append(tr);
+                });
+            });
+        });
+
+
+        function fmt(amt) {
+            return amt == 0 ? '-' : amt
+        }
+    </script>
+</head>
+<body>
+<h1>Balance Sheet</h1>
+
+<table id="tbTable" border="0" width="80%">
+    <tbody></tbody>
+</table>
+</body>
+</html>

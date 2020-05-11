@@ -1,0 +1,12 @@
+{
+  "suites": 4,
+  "tests": 60,
+  "passes": 60,
+  "pending": 0,
+  "failures": 0,
+  "start": "2016-02-19T06:31:11.736Z",
+  "end": "2016-02-19T06:31:14.115Z",
+  "duration": 2379,
+  "responseChanged": 0,
+  "responseFailure": 0
+}

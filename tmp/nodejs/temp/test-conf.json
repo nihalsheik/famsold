@@ -1,0 +1,12 @@
+{
+  "source": "c:/temp/src",
+  "destination": "",
+  "includePattern": [
+    "/*.java$"
+  ],
+  "excludePattern": [
+    "/*/META-INF/*",
+    "/*/webapp/*",
+    "/*/controller/*"
+  ]
+}

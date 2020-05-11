@@ -1,0 +1,15 @@
+{
+  "apiUrl": "http://localhost:3000/api/v1",
+  "db": {
+    "host": "127.0.0.1",
+    "user": "root",
+    "password": "welcome01",
+    "database": "ac",
+    "connectionLimit": 3,
+    "multipleStatements": true
+  },
+  "showSql": true,
+  "report": {
+    "pageLimit": 25
+  }
+}

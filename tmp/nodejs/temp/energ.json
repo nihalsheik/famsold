@@ -1,0 +1,11 @@
+{
+  "source": "C:/projects/energous/backup/cloud/20-08-2015",
+  "destination": "c:/temp/abc",
+  "includePattern": [
+    "/*\\.js"
+  ],
+  "excludePattern": [
+    "/*/node_modules/*",
+    "/*/\\./*"
+  ]
+}
